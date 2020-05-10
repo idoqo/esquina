@@ -15,7 +15,7 @@ func NewHandler() http.Handler{
 	router.MethodNotAllowed(methodNotAllowedHandler)
 
 	router.Route("/api", func (router chi.Router) {
-
+		router.Route("/store", store)
 	})
 	return cors.AllowAll().Handler(router)
 }
