@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/idoqo/reads/handler"
-	"github.com/idoqo/reads/logger"
+	"github.com/idoqo/esquina/handler"
+	"github.com/idoqo/esquina/logger"
 	"net"
 	"net/http"
 	"os"
@@ -33,7 +33,7 @@ func main() {
 
 	logger.Info(fmt.Sprintf("Started API server on %s", port))
 	ch := make(chan os.Signal, 1)
-	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
+	signal.Notify(ch, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 	logger.Info(fmt.Sprint(<-ch))
 	logger.Info("Shutting down API Server")
 }

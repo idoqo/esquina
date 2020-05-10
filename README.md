@@ -30,6 +30,10 @@ Run them with:
 ```
 go test
 ```
+### Resources
+Tour of Go
+Moira API source
+OpenAPI
 ### Documentation
 The API documentation is an Open API description powered by go-swagger. 
 You can view it at: http://abeg-rest.haq
