@@ -1,0 +1,98 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "OpenAPI v2 description of the Esquina API.",
+    "title": "Esquina API.",
+    "version": "0.0.1"
+  },
+  "host": "https://abeg-rest.haq",
+  "basePath": "/api",
+  "paths": {
+    "/store": {
+      "post": {
+        "tags": [
+          "stores"
+        ],
+        "summary": "Creates a new store owned by the authenticated user in the database.",
+        "operationId": "createStore",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/responseStoreCreated"
+          },
+          "500": {
+            "$ref": "#/responses/errorInternalServer"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "x-go-name": "ErrorText"
+        },
+        "status": {
+          "type": "string",
+          "x-go-name": "StatusText"
+        }
+      },
+      "x-go-package": "github.com/idoqo/esquina/esquina"
+    },
+    "Store": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "x-go-name": "Description"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ID"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "owner_id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "OwnerID"
+        }
+      },
+      "x-go-package": "github.com/idoqo/esquina/dto"
+    }
+  },
+  "responses": {
+    "errorInternalServer": {
+      "description": "An internal server error occurs when the operation crashes the application and it cannot be proceed.",
+      "schema": {
+        "$ref": "#/definitions/ErrorResponse"
+      }
+    },
+    "responseStoreCreated": {
+      "description": "Store was successfully created",
+      "schema": {
+        "$ref": "#/definitions/Store"
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    }
+  }
+}

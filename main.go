@@ -11,6 +11,8 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+
+	_ "github.com/idoqo/esquina/docs"
 )
 
 var (
